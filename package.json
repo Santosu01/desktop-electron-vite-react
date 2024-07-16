@@ -1,0 +1,67 @@
+{
+  "name": "desktop-electron-vite-react",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Desktop application with electron and react",
+  "author": "Marcio Santos",
+  "homepage": "./",
+  "main": "dist/electron-main.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    "compile-electron-main": "npx tsc --project tsconfig.electron.json",
+    "app-build": "npm run build && npm run compile-electron-main && copyfiles -f electron/*.js dist/",
+    "app-start": "npm run app-build && electron-forge start --app-path ./dist/electron-main.js",
+    "package-app-files": "npm run app-build && electron-forge package",
+    "make-app-installer": "npm run app-build && electron-forge make"
+  },
+  "build": {
+    "appId": "com.desktop-react-vite.app",
+    "includeSubNodeModules": "true",
+    "icon": ".dist/vite.svg",
+    "files": [
+      "dist/**/",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "dist",
+      "output": "release"
+    },
+    "extraMetadata": {
+      "main": "dist/electron-main.js",
+      "extraFiles": [
+        "/dist/assets/**"
+      ]
+    }
+  },
+  "dependencies": {
+    "@types/minimatch": "^5.1.2",
+    "electron-squirrel-startup": "^1.0.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "rimraf": "^6.0.1"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^7.4.0",
+    "@electron-forge/maker-deb": "^7.4.0",
+    "@electron-forge/maker-rpm": "^7.4.0",
+    "@electron-forge/maker-squirrel": "^7.4.0",
+    "@electron-forge/maker-zip": "^7.4.0",
+    "@electron-forge/plugin-auto-unpack-natives": "^7.4.0",
+    "@electron-forge/plugin-fuses": "^7.4.0",
+    "@electron/fuses": "^1.8.0",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@typescript-eslint/eslint-plugin": "^7.13.1",
+    "@typescript-eslint/parser": "^7.13.1",
+    "@vitejs/plugin-react": "^4.3.1",
+    "electron": "^31.2.1",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-react-refresh": "^0.4.7",
+    "typescript": "^5.2.2",
+    "vite": "^5.3.1"
+  }
+}

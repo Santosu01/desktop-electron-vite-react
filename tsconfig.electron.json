@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "allowJs": true,
+    "jsx": "react-jsx",
+    "outDir": "./electron",
+    "baseUrl": "./electron-config",
+  },
+  "include": ["electron-config/*.ts"],
+  "exclude": ["node_modules", "src", "*.ts", "*.js", "dist", "build", "public"]
+}
