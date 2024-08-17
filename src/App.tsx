@@ -1,6 +1,6 @@
-import "./assets/css/reset.css";
-import "./assets/css/App.css";
-import { Button } from "@components/atoms/Button";
+import './assets/css/reset.css';
+import './assets/css/App.css';
+import { Button } from '@components/atoms/Button';
 
 function App() {
   return (

@@ -1,10 +1,10 @@
-import styled, { css } from "styled-components";
-import { ButtonProps, Style, Type, Variant } from "./types/button";
+import styled, { css } from 'styled-components';
+import { ButtonProps, Style, Type, Variant } from './types/button';
 
 export const Button = styled.button.attrs<ButtonProps>((props) => ({
   type: props.type ?? Type.button,
   variantSize: props.variantSize ?? Style.small,
-  variantRounded: props.variantRounded ?? Style.small,
+  variantRounded: props.variantRounded ?? Style.small
 }))`
   background: white;
   border: none;

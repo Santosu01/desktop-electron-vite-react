@@ -1,22 +1,22 @@
 export enum Type {
-  button = "button",
-  submit = "submit",
-  reset = "reset",
+  button = 'button',
+  submit = 'submit',
+  reset = 'reset'
 }
 
 export enum Variant {
-  filled = "filled",
-  tonal = "tonal",
-  elevated = "elevated",
-  outlined = "outlined",
-  text = "text",
+  filled = 'filled',
+  tonal = 'tonal',
+  elevated = 'elevated',
+  outlined = 'outlined',
+  text = 'text'
 }
 
 export enum Style {
-  none = "none",
-  small = "small",
-  medium = "medium",
-  large = "large",
+  none = 'none',
+  small = 'small',
+  medium = 'medium',
+  large = 'large'
 }
 
 export interface ButtonProps {
