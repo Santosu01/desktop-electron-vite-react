@@ -1,36 +1,61 @@
 import styled, { css } from "styled-components";
-
-enum Variant {
-  filled = "filled",
-  tonal = "tonal",
-  elevated = "elevated",
-  outlined = "outlined",
-  text = "text",
-}
-
-interface ButtonProps {
-  variant?: keyof typeof Variant;
-  type?: "button" | "submit" | "reset";
-}
+import { ButtonProps, Style, Type, Variant } from "./types/button";
 
 export const Button = styled.button.attrs<ButtonProps>((props) => ({
-  type: props.type ?? "button",
+  type: props.type ?? Type.button,
+  variantSize: props.variantSize ?? Style.small,
+  variantRounded: props.variantRounded ?? Style.small,
 }))`
   background: white;
-  border-radius: 3px;
   border: none;
   color: #bf4f74;
   margin: 0;
-  padding: 0.5em 1em;
   outline: none;
+  height: fit-content;
 
   &:focus {
-  outline: none;
+    outline: none;
   }
 
   &:hover {
-  opacity: 0.9;
+    opacity: 0.9;
   }
+
+  ${(props) =>
+    props.variantRounded === Style.small &&
+    css`
+      border-radius: 3px;
+    `}
+
+  ${(props) =>
+    props.variantRounded === Style.medium &&
+    css`
+      border-radius: 10px;
+    `}
+
+  ${(props) =>
+    props.variantRounded === Style.large &&
+    css`
+      border-radius: 30px;
+    `}
+
+  ${(props) =>
+    props.variantSize === Style.small &&
+    css`
+      padding: 0.25em 0.5em;
+    `}
+
+  ${(props) =>
+    props.variantSize === Style.medium &&
+    css`
+      padding: 0.5em 1em;
+    `}
+
+  ${(props) =>
+    props.variantSize === Style.large &&
+    css`
+      padding: 1.5em 2em;
+    `}
 
   ${(props) =>
     props.variant === Variant.elevated &&
@@ -46,7 +71,7 @@ export const Button = styled.button.attrs<ButtonProps>((props) => ({
       color: #cbc4cc;
     `}
 
-    ${(props) =>
+  ${(props) =>
     props.variant === Variant.outlined &&
     css`
       background: transparent;
@@ -58,7 +83,7 @@ export const Button = styled.button.attrs<ButtonProps>((props) => ({
       }
     `}
 
-    ${(props) =>
+  ${(props) =>
     props.variant === Variant.text &&
     css`
       background: transparent;
@@ -66,7 +91,7 @@ export const Button = styled.button.attrs<ButtonProps>((props) => ({
       color: #553f5d;
     `}
 
-    ${(props) =>
+  ${(props) =>
     props.variant === Variant.tonal &&
     css`
       background: #45455a;
