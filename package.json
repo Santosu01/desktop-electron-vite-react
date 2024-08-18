@@ -17,7 +17,17 @@
     "make-app-installer": "npm run app-build && electron-forge make",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "lint:fix": "eslint --fix",
-    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
+    "format": "prettier --write --config ./.prettierrc",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx}": [
+      "npm run lint",
+      "npm run format"
+    ],
+    "**/*.{html,json,css,scss,md,mdx}": [
+      "prettier -w"
+    ]
   },
   "build": {
     "appId": "com.desktop-react-vite.app",
@@ -47,6 +57,8 @@
     "styled-components": "^6.1.12"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.4.0",
+    "@commitlint/config-conventional": "^19.2.2",
     "@electron-forge/cli": "^7.4.0",
     "@electron-forge/maker-deb": "^7.4.0",
     "@electron-forge/maker-rpm": "^7.4.0",
@@ -68,6 +80,8 @@
     "eslint-plugin-react": "^7.35.0",
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.7",
+    "husky": "^9.1.4",
+    "lint-staged": "^15.2.9",
     "postcss": "^8.4.39",
     "prettier": "^3.3.3",
     "tailwindcss": "^3.4.5",
