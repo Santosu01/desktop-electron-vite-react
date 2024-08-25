@@ -1,6 +1,7 @@
 import { lazy } from 'react';
 import { createBrowserRouter, Outlet } from 'react-router-dom';
 import ErrorPage from '@/modules/pages/ErrorPage';
+import PageNotFound from '@/modules/pages/PageNotFound';
 import Layout from '@/modules/core/components/organisms/Layout';
 
 export const router = createBrowserRouter([
@@ -29,7 +30,7 @@ export const router = createBrowserRouter([
           return { element: <Login /> };
         }
       },
-      { path: '*', element: <div>No page found</div> }
+      { path: '*', element: <PageNotFound /> }
     ]
   }
 ]);
